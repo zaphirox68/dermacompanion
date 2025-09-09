@@ -23,8 +23,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Force light theme even when user prefers dark to ensure consistent palette */
+    --background: #F7F8F8;
+    --foreground: #0f172a;
   }
 }
 

@@ -60,7 +60,7 @@ export default function Home() {
                   placeholder="E‑Mail-Adresse"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  aria-invalid={email.length > 0 ? (!isEmailValid).toString() : undefined}
+                  aria-invalid={email.length > 0 && !isEmailValid ? true : undefined}
                 />
                 <button className="btn btn-primary" disabled={!canSubmit}>
                   {status === "submitting" ? "Sende…" : "Jetzt zur Warteliste anmelden"}
