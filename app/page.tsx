@@ -50,21 +50,24 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-bold">So nutzt du unseren Service</h2>
           <p className="mt-2 text-black/60">Antwort in 24 h</p>
         </div>
-        <div className="mt-8 grid sm:grid-cols-3 gap-4">
-          <div className="card">
-            <div className="placeholder h-[120px]">Icon: Foto‑Upload</div>
-            <h3 className="mt-4 font-semibold">1) 3 klare Fotos + 6 Fragen</h3>
-            <p className="mt-1 text-sm text-black/70">Leite uns drei gut beleuchtete Bilder und kurze Antworten weiter.</p>
+        <div className="mt-8 grid sm:grid-cols-3 gap-6">
+          <div className="card text-center">
+            <img src="/assets/DreiFotos.png" alt="3 klare Fotos + 6 Fragen" className="w-full h-43 object-cover object-top rounded-xl mb-4" />
+            <div className="inline-flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-bold mb-3">1</div>
+            <h3 className="font-semibold mb-2">3 klare Fotos + 6 Fragen</h3>
+            <p className="text-sm text-black/70">Leite uns drei gut beleuchtete Bilder und kurze Antworten weiter.</p>
           </div>
-          <div className="card">
-            <div className="placeholder h-[120px]">Icon: Ärztlicher Review</div>
-            <h3 className="mt-4 font-semibold">2) Fachärztliche Prüfung</h3>
-            <p className="mt-1 text-sm text-black/70">Dein Fall wird von Dermatologen begutachtet.</p>
+          <div className="card text-center">
+            <img src="/assets/FachaerztlichePruefung.png" alt="Fachärztliche Prüfung" className="w-full h-43 object-cover object-top rounded-xl mb-4" />
+            <div className="inline-flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-bold mb-3">2</div>
+            <h3 className="font-semibold mb-2">Fachärztliche Prüfung</h3>
+            <p className="text-sm text-black/70">Dein Fall wird von Dermatologen begutachtet.</p>
           </div>
-          <div className="card">
-            <div className="placeholder h-[120px]">Icon: Plan + Rezept</div>
-            <h3 className="mt-4 font-semibold">3) Plan + Rezept (falls sinnvoll)</h3>
-            <p className="mt-1 text-sm text-black/70">Konkrete Schritte für Zuhause – Rezept zur Abholung, wenn medizinisch angezeigt.</p>
+          <div className="card text-center">
+            <img src="/assets/PlanundRezept.png" alt="Plan + Rezept" className="w-full h-43 object-cover object-top rounded-xl mb-4" />
+            <div className="inline-flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-bold mb-3">3</div>
+            <h3 className="font-semibold mb-2">Plan + Rezept (falls sinnvoll)</h3>
+            <p className="text-sm text-black/70">Konkrete Schritte für Zuhause – Rezept zur Abholung, wenn medizinisch angezeigt.</p>
           </div>
         </div>
         <div className="mt-6 text-center"><a href="/capture.html?source=how_cta" className="btn btn-primary">Jetzt Starten</a></div>
@@ -77,15 +80,62 @@ export default function Home() {
         <div className="section-narrow text-center">
           <h2 className="text-2xl sm:text-3xl font-bold">Wobei wir helfen können</h2>
         </div>
-        <div className="mt-8 grid sm:grid-cols-3 gap-4">
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Intimbereich</h3><p className="mt-1 text-sm text-black/70">Diskrete Anliegen (Ausschläge, Juckreiz, Verdacht auf Geschlechtskrankheit)</p></div>
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Akne</h3><p className="mt-1 text-sm text-black/70">Mild bis moderat</p></div>
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Ausschläge, Ekzeme & Dermatitis</h3><p className="mt-1 text-sm text-black/70">Reizungen, Juckreiz, Entzündungen</p></div>
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Herpes</h3><p className="mt-1 text-sm text-black/70">Lippen‑ oder Genital‑Herpes</p></div>
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Psoriasis</h3><p className="mt-1 text-sm text-black/70">Schuppenflechte</p></div>
-          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Infektionen</h3><p className="mt-1 text-sm text-black/70">Bakteriell, viral oder pilzbedingt (nicht akut schwer)</p></div>
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Intimbereich.png" alt="Intimbereich" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Intimbereich</h3>
+                <p className="mt-1 text-sm text-black/70">Ausschläge, Juckreiz, Verdacht auf Geschlechtskrankheiten</p>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Akne.png" alt="Akne" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Akne</h3>
+                <p className="mt-1 text-sm text-black/70">In allen Ausprägungen</p>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Ausschlaege.png" alt="Ausschläge" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Ausschläge, Ekzeme & Dermatitis</h3>
+                <p className="mt-1 text-sm text-black/70">Reizungen, Juckreiz, Entzündungen</p>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Herpes.png" alt="Herpes" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Herpes</h3>
+                <p className="mt-1 text-sm text-black/70">Lippen‑ oder Genital‑Herpes</p>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Psoriasis.png" alt="Psoriasis" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Psoriasis</h3>
+                <p className="mt-1 text-sm text-black/70">Schuppenflechte</p>
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="flex items-center gap-4">
+              <img src="/assets/Infektionen.png" alt="Infektionen" className="w-22 h-22 rounded-lg object-contain flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold">Infektionen</h3>
+                <p className="mt-1 text-sm text-black/70">Bakteriell, viral oder pilzbedingt</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="mt-4 text-sm text-black/60">Nicht für Notfälle oder stark verdächtige Befunde. Bei Warnzeichen bitte sofort Notruf/Notfallambulanz.</p>
         <div className="mt-6 text-center"><a href="/capture.html?source=scope_cta" className="btn btn-primary">Jetzt Starten</a></div>
       </section>
       </div>
@@ -93,9 +143,41 @@ export default function Home() {
       {/* Why us (Trust) */}
       <div className="w-full">
       <section id="trust" className="section section-space">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="card"><div className="placeholder h-[200px]">Porträt Dr. Max Mustermann</div><h3 className="mt-4 font-semibold">Erfahrene Dermatologie</h3><p className="mt-1 text-sm text-black/70">Behandlung durch lizenzierte Fachärzte. Beispiel: Dr. Max Mustermann, Facharzt für Dermatologie (12+ Jahre Erfahrung, Ärztekammer‑Registrierung).</p></div>
-          <div className="card"><div className="placeholder h-[200px]">EU‑Server + Verschlüsselung</div><h3 className="mt-4 font-semibold">Sicherheit auf Gesundheitsniveau</h3><p className="mt-1 text-sm text-black/70">EU‑Hosting, Verschlüsselung, strenge Zugriffskontrollen. DSGVO‑konform. Deine Daten werden niemals verkauft.</p></div>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            <div className="md:col-span-2">
+              <div className="card text-center">
+                <img 
+                  src="/assets/doclandscape.png" 
+                  alt="Erfahrene Dermatologen" 
+                  className="hidden md:block w-full h-85 object-cover rounded-xl mb-4" 
+                />
+                <img 
+                  src="/assets/docportrait.png" 
+                  alt="Erfahrene Dermatologen" 
+                  className="md:hidden w-full h-85 object-cover rounded-xl mb-4" 
+                />
+                <h3 className="font-semibold mb-2">Erfahrene Dermatologen</h3>
+                <p className="text-sm text-black/70">Behandlung durch lizenzierte Fachärzte</p>
+              </div>
+            </div>
+            <div className="md:col-span-1">
+            <div className="card">
+              <h3 className="font-semibold mb-3 text-sm">Höchster Datenschutz für Gesundheitsdaten</h3>
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
+                  ✓ DSGVO-konform
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
+                  🇪🇺 EU-Server
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
+                  🔒 Ende-zu-Ende verschlüsselt
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </section>
       </div>
@@ -124,7 +206,7 @@ export default function Home() {
                 <li>Digitaler Workflow – sichere Plattform, strukturierte Fälle</li>
                 <li>Vergütung pro Fall – transparent und fair</li>
               </ul>
-              <div className="mt-4"><a href="/capture.html?source=doctors_cta" className="btn btn-primary">Interesse bekunden</a></div>
+              <div className="mt-6 text-center"><a href="/capture.html?source=doctors_cta" className="btn btn-primary">Interesse bekunden</a></div>
             </div>
             <div className="card">
               <h3 className="font-semibold">Qualitätsrahmen</h3>
