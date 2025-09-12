@@ -6,7 +6,7 @@
   /* Brand palette */
   --dc-teal: #16a199; /* primary */
   --dc-blue-gray: #5b6b7a; /* secondary text */
-  --dc-coral: #ff7a59; /* CTA */
+  --dc-coral: #16a199; /* CTA (aligned to primary; no orange) */
   --dc-offwhite: #f7f8f8; /* subtle bg */
 }
 
@@ -30,7 +30,7 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.7)), url('/assets/background1.jpg') center/cover fixed no-repeat;
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
@@ -41,7 +41,7 @@ body {
     @apply rounded-full px-5 py-3 text-base font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
   }
   .btn-primary {
-    @apply bg-accent text-white hover:opacity-90 focus-visible:ring-accent;
+    @apply bg-primary text-white hover:opacity-90 focus-visible:ring-primary;
   }
   .btn-secondary {
     @apply bg-primary/10 text-primary hover:bg-primary/15;
@@ -72,5 +72,26 @@ body {
   }
   .placeholder {
     @apply grid place-items-center rounded-2xl border-2 border-dashed border-muted/50 bg-white/60 text-muted text-sm h-[220px];
+  }
+  /* Background utilities for brand imagery */
+  .bg-hero {
+    background-image: url('/assets/background1.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .bg-hero-zoom {
+    background-image: url('/assets/background1.jpg');
+    background-size: 120%;
+    background-position: center;
+  }
+  .bg-hero-portrait {
+    background-image: url('/assets/background1.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+  .bg-hero-landscape {
+    background-image: url('/assets/background1.jpg');
+    background-size: cover;
+    background-position: center 40%;
   }
 }

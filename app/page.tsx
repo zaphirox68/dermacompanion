@@ -1,96 +1,52 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
-
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [note, setNote] = useState("");
-  const [consent, setConsent] = useState(false);
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  const emailId = useId();
-  const nameId = useId();
-  const noteId = useId();
-  const consentId = useId();
-
-  const isEmailValid = useMemo(() => /.+@.+\..+/.test(email), [email]);
-  const canSubmit = isEmailValid && consent && status !== "submitting";
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!canSubmit) return;
-    setStatus("submitting");
-    // Simulate async submit; backend integration (Firebase) to be added later
-    setTimeout(() => {
-      setStatus("success");
-      setEmail("");
-      setName("");
-      setNote("");
-      setConsent(false);
-    }, 700);
-  }
 
   return (
     <div>
+      {/* Top nav */}
+      <div className="section py-4 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-3">
+          <img src="/assets/waveonly.png" alt="DermaCompanion" className="h-12 w-auto rounded-[10px]" />
+          <span className="text-xl sm:text-2xl font-semibold"><span className="text-black/90">Derma</span><span className="text-primary">Companion</span></span>
+        </a>
+        <nav className="text-[15px] sm:text-base text-black/70 flex gap-6">
+          <a href="#how" className="hover:underline">Ablauf</a>
+          <a href="#treat" className="hover:underline">Wobei wir helfen</a>
+          <a href="#doctors" className="hover:underline">Für Ärzte</a>
+        </nav>
+      </div>
+
       {/* Hero */}
-      <header className="section section-space">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div>
-            <div className="kicker">DermaCompanion</div>
-            <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">
-              Dermatologie‑Antworten in Stunden. Online.
-            </h1>
-            <p className="mt-4 text-[17px] leading-7 text-black/70">
-              Lade Fotos hoch, erhalte einen ärztlich geprüften Plan und hole die Behandlung in deiner Apotheke ab. Privat. Sicher. EU‑gehostet.
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-3 text-sm text-black/60">
-              <li className="flex items-center gap-2"><span className="inline-block h-2 w-2 rounded-full bg-primary"></span> Lizensierte Ärzt:innen</li>
-              <li className="flex items-center gap-2"><span className="inline-block h-2 w-2 rounded-full bg-primary"></span> DSGVO‑konforme Sicherheit</li>
-              <li className="flex items-center gap-2"><span className="inline-block h-2 w-2 rounded-full bg-primary"></span> EU‑Datenhosting</li>
-            </ul>
-            <form onSubmit={handleSubmit} className="mt-6 grid gap-3 max-w-xl" aria-live="polite">
-              <div className="grid sm:grid-cols-[1fr_auto] gap-3">
-                <label htmlFor={emailId} className="sr-only">E‑Mail</label>
-                <input
-                  id={emailId}
-                  type="email"
-                  required
-                  className="input"
-                  placeholder="E‑Mail-Adresse"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  aria-invalid={email.length > 0 && !isEmailValid ? true : undefined}
-                />
-                <button className="btn btn-primary" disabled={!canSubmit}>
-                  {status === "submitting" ? "Sende…" : "Jetzt zur Warteliste anmelden"}
-                </button>
-              </div>
-              <div className="flex items-start gap-3">
-                <input id={consentId} type="checkbox" className="checkbox mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                <label htmlFor={consentId} className="text-sm text-black/70">
-                  Ich willige ein, dass meine Angaben gespeichert und zur Kontaktaufnahme über diesen Service verwendet werden. Wartelistenplätze sind limitiert.
-                </label>
-              </div>
-              {status === "success" && (
-                <p className="text-sm text-green-700">Danke! Du stehst auf der Warteliste. Wir melden uns zeitnah.</p>
-              )}
-            </form>
-          </div>
-          <div>
-            <div className="placeholder h-[320px] sm:h-[380px]">
-              Hero‑Illustration: Ärztin + Smartphone‑UI, weiche Teal‑Verläufe
+      <div className="relative">
+        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url('/assets/hero1.png')", backgroundSize: "cover", backgroundPosition: "center" }} />
+        <header className="section section-space relative min-h-[620px] flex items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="relative -top-4 md:-top-5">
+              <div className="mt-3 uppercase text-primary/90 font-semibold text-xl sm:text-2xl tracking-wide">Dermatologische Hilfe in 24 h</div>
+              <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Online‑Beratungen mit Fachärzten für 39 €</h1>
+              <div className="mt-6"><a id="cta-hero" href="/capture.html?source=hero_cta" className="btn btn-primary">Jetzt Starten</a></div>
             </div>
+            <div className="hidden md:block" />
           </div>
-        </div>
-        <div className="mt-6 text-xs text-black/50">Keine Notfälle. Bei Warnzeichen wende dich bitte sofort an den Notruf.</div>
-      </header>
+        </header>
+      </div>
+      
+      {/* Problem / Promise */}
+      <div className="relative">
+        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('/assets/background1.jpg')", backgroundSize: "cover", backgroundPosition: "center", transform: "scaleX(-1)" }} />
+        <section className="section section-space py-24 md:py-28 relative">
+          <div className="section-narrow text-center">
+          <p className="text-2xl sm:text-3xl font-semibold">Kein Termin. Kein Wartezimmer. Kein Smalltalk. Klarheit in 24 h.</p>
+          </div>
+        </section>
+      </div>
 
       {/* How it works */}
-      <section className="section section-space">
+      <section id="how" className="section section-space">
         <div className="section-narrow text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold">So funktioniert’s</h2>
-          <p className="mt-2 text-black/60">Standard unter 48h • Fast‑Track unter 12h</p>
+          <h2 className="text-2xl sm:text-3xl font-bold">So nutzt du unseren Service</h2>
+          <p className="mt-2 text-black/60">Antwort in 24 h</p>
         </div>
         <div className="mt-8 grid sm:grid-cols-3 gap-4">
           <div className="card">
@@ -100,105 +56,84 @@ export default function Home() {
           </div>
           <div className="card">
             <div className="placeholder h-[120px]">Icon: Ärztlicher Review</div>
-            <h3 className="mt-4 font-semibold">2) Review durch Dermatolog:in</h3>
-            <p className="mt-1 text-sm text-black/70">Board‑zertifizierte Fachärzt:innen prüfen deinen Fall.</p>
+            <h3 className="mt-4 font-semibold">2) Fachärztliche Prüfung</h3>
+            <p className="mt-1 text-sm text-black/70">Dein Fall wird von Dermatologen begutachtet.</p>
           </div>
           <div className="card">
             <div className="placeholder h-[120px]">Icon: Plan + Rezept</div>
             <h3 className="mt-4 font-semibold">3) Plan + Rezept (falls sinnvoll)</h3>
-            <p className="mt-1 text-sm text-black/70">Du erhältst einen Behandlungsplan – plus Rezept zur Abholung in der Apotheke, wenn medizinisch angezeigt.</p>
+            <p className="mt-1 text-sm text-black/70">Konkrete Schritte für Zuhause – Rezept zur Abholung, wenn medizinisch angezeigt.</p>
           </div>
         </div>
+        <div className="mt-6 text-center"><a href="/capture.html?source=how_cta" className="btn btn-primary">Jetzt Starten</a></div>
       </section>
 
-      {/* Scope */}
-      <section className="section section-space">
-        <div className="card">
-          <h2 className="text-2xl sm:text-3xl font-bold">Was wir behandeln</h2>
-          <p className="mt-2 text-black/70">Akne, Ekzeme, Ausschläge, unauffällige Muttermale (keine Notfälle).</p>
-          <p className="mt-1 text-sm text-black/50">Nicht für Notfälle. Bei starkem Fieber, starker Blutung, plötzlichen schweren Symptomen: Notruf.</p>
+      {/* What we treat */}
+      <section id="treat" className="section section-space">
+        <div className="section-narrow text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold">Wobei wir helfen können</h2>
         </div>
+        <div className="mt-8 grid sm:grid-cols-3 gap-4">
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Intimbereich</h3><p className="mt-1 text-sm text-black/70">Diskrete Anliegen (Ausschläge, Juckreiz, Verdacht auf Geschlechtskrankheit)</p></div>
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Akne</h3><p className="mt-1 text-sm text-black/70">Mild bis moderat</p></div>
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Ausschläge, Ekzeme & Dermatitis</h3><p className="mt-1 text-sm text-black/70">Reizungen, Juckreiz, Entzündungen</p></div>
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Herpes</h3><p className="mt-1 text-sm text-black/70">Lippen‑ oder Genital‑Herpes</p></div>
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Psoriasis</h3><p className="mt-1 text-sm text-black/70">Schuppenflechte</p></div>
+          <div className="card"><div className="placeholder h-[80px]">Bild</div><h3 className="mt-3 font-semibold">Infektionen</h3><p className="mt-1 text-sm text-black/70">Bakteriell, viral oder pilzbedingt (nicht akut schwer)</p></div>
+        </div>
+        <p className="mt-4 text-sm text-black/60">Nicht für Notfälle oder stark verdächtige Befunde. Bei Warnzeichen bitte sofort Notruf/Notfallambulanz.</p>
+        <div className="mt-6 text-center"><a href="/capture.html?source=scope_cta" className="btn btn-primary">Jetzt Starten</a></div>
       </section>
 
-      {/* Why us */}
-      <section className="section section-space">
+      {/* Why us (Trust) */}
+      <section id="trust" className="section section-space">
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="card">
-            <div className="placeholder h-[200px]">Porträt Dr. Max Mustermann, Dermatologe</div>
-            <h3 className="mt-4 font-semibold">Dr. Dr. Max Mustermann</h3>
-            <p className="mt-1 text-sm text-black/70">Facharzt für Dermatologie, 12+ Jahre Erfahrung, Ärztekammer‑Registrierung AT‑123456.</p>
-          </div>
-          <div className="card">
-            <div className="placeholder h-[200px]">EU‑Server + Verschlüsselung</div>
-            <h3 className="mt-4 font-semibold">Sicherheit auf Gesundheitsniveau</h3>
-            <p className="mt-1 text-sm text-black/70">EU‑Hosting, Verschlüsselung, strenge Zugriffskontrollen. Entwickelt mit Expertise in Gesundheits‑IT‑Sicherheit.</p>
-          </div>
+          <div className="card"><div className="placeholder h-[200px]">Porträt Dr. Max Mustermann</div><h3 className="mt-4 font-semibold">Erfahrene Dermatologie</h3><p className="mt-1 text-sm text-black/70">Behandlung durch lizenzierte Fachärzte. Beispiel: Dr. Max Mustermann, Facharzt für Dermatologie (12+ Jahre Erfahrung, Ärztekammer‑Registrierung).</p></div>
+          <div className="card"><div className="placeholder h-[200px]">EU‑Server + Verschlüsselung</div><h3 className="mt-4 font-semibold">Sicherheit auf Gesundheitsniveau</h3><p className="mt-1 text-sm text-black/70">EU‑Hosting, Verschlüsselung, strenge Zugriffskontrollen. DSGVO‑konform. Deine Daten werden niemals verkauft.</p></div>
         </div>
       </section>
 
-      {/* Social proof / CTA */}
+      {/* CTA strip */}
       <section className="section section-space">
         <div className="section-narrow text-center">
-          <div className="kicker">Pre‑Launch</div>
-          <h2 className="text-2xl sm:text-3xl font-bold">Gründungskohorte bildet sich – Einladungen limitiert</h2>
-          <p className="mt-2 text-black/70">Österreich & Deutschland – bald verfügbar. Sichere dir jetzt einen Platz.</p>
-          <form onSubmit={handleSubmit} className="mt-6 grid gap-3 max-w-xl mx-auto" aria-live="polite">
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div>
-                <label htmlFor={nameId} className="sr-only">Name</label>
-                <input id={nameId} type="text" className="input" placeholder="Name (optional)" value={name} onChange={(e) => setName(e.target.value)} />
-              </div>
-              <div>
-                <label htmlFor={emailId + "-2"} className="sr-only">E‑Mail</label>
-                <input id={emailId + "-2"} type="email" required className="input" placeholder="E‑Mail‑Adresse" value={email} onChange={(e) => setEmail(e.target.value)} />
-              </div>
-            </div>
-            <div>
-              <label htmlFor={noteId} className="sr-only">Notiz</label>
-              <textarea id={noteId} className="textarea" placeholder="Notiz (optional)" value={note} onChange={(e) => setNote(e.target.value)} />
-            </div>
-            <div className="flex items-start gap-3">
-              <input id={consentId + "-2"} type="checkbox" className="checkbox mt-0.5" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-              <label htmlFor={consentId + "-2"} className="text-sm text-black/70">
-                Ich willige ein, dass meine Angaben gespeichert und zur Kontaktaufnahme über diesen Service verwendet werden.
-              </label>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="btn btn-primary" disabled={!canSubmit}>{status === "submitting" ? "Sende…" : "Wartelistenplatz sichern"}</button>
-              <div className="text-xs text-black/50 self-center">Plätze limitiert • Standard ab 49 € • Fast‑Track verfügbar</div>
-            </div>
-            {status === "success" && (
-              <p className="text-sm text-green-700">Danke! Du stehst auf der Warteliste.</p>
-            )}
-          </form>
+          <h2 className="text-2xl sm:text-3xl font-bold">Antwort in 24 h</h2>
+          <p className="mt-2 text-black/70">Österreich & Deutschland – komplett online, diskret, klar.</p>
+          <div className="mt-4"><a id="cta-mid" href="/capture.html?source=mid_cta" className="btn btn-primary">Jetzt Starten</a></div>
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Für Ärzte – Recruiting Fake Door */}
+      <section id="doctors" className="section section-space">
+        <div className="section-narrow">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center">Für Ärztinnen und Ärzte</h2>
+          <div className="mt-6 grid md:grid-cols-2 gap-6 items-start">
+            <div className="card">
+              <h3 className="font-semibold">Mitwirken bei DermaCompanion</h3>
+              <ul className="mt-3 text-sm text-black/70 space-y-2 list-disc pl-5">
+                <li>Asynchron arbeiten – flexibel neben Praxis und Klinik</li>
+                <li>Digitaler Workflow – sichere Plattform, strukturierte Fälle</li>
+                <li>Vergütung pro Fall – transparent und fair</li>
+              </ul>
+              <div className="mt-4"><a href="/capture.html?source=doctors_cta" className="btn btn-primary">Interesse bekunden</a></div>
+            </div>
+            <div className="card">
+              <h3 className="font-semibold">Qualitätsrahmen</h3>
+              <p className="mt-2 text-sm text-black/70">Nur approbierte Fachärzte für Dermatologie. Evidenzbasiert, datenschutzkonform, EU‑gehostet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ (static open) */}
       <section className="section section-space">
         <div className="section-narrow">
           <h2 className="text-2xl sm:text-3xl font-bold">Häufige Fragen</h2>
           <div className="mt-6 grid gap-4">
-            <details className="card">
-              <summary className="font-medium cursor-pointer">Wird das von der Versicherung übernommen?</summary>
-              <p className="mt-2 text-sm text-black/70">Wir starten als Selbstzahler‑Service. Optionen mit Versicherungen können folgen.</p>
-            </details>
-            <details className="card">
-              <summary className="font-medium cursor-pointer">Wie schnell erhalte ich eine Antwort?</summary>
-              <p className="mt-2 text-sm text-black/70">Standard unter 48 Stunden, Fast‑Track unter 12 Stunden.</p>
-            </details>
-            <details className="card">
-              <summary className="font-medium cursor-pointer">Kann ich ein Rezept erhalten?</summary>
-              <p className="mt-2 text-sm text-black/70">Ja, wenn es medizinisch sinnvoll ist, stellen wir ein Rezept aus – zur Abholung in deiner Apotheke.</p>
-            </details>
-            <details className="card">
-              <summary className="font-medium cursor-pointer">Wo werden meine Daten gespeichert?</summary>
-              <p className="mt-2 text-sm text-black/70">In der EU. Wir verkaufen deine Daten niemals.</p>
-            </details>
-            <details className="card">
-              <summary className="font-medium cursor-pointer">Was ist mit auffälligen Muttermalen oder Warnzeichen?</summary>
-              <p className="mt-2 text-sm text-black/70">Bei roten Flaggen oder Notfällen bitte sofort eine Notfallstelle aufsuchen. Unser Service ist nicht für Notfälle.</p>
-            </details>
+            <div className="card"><h3 className="font-medium">Übernimmt die Versicherung die Kosten?</h3><p className="mt-2 text-sm text-black/70">Wir starten als Selbstzahler‑Service. Optionen mit Kassen/Privatversicherung können folgen.</p></div>
+            <div className="card"><h3 className="font-medium">Wie schnell bekomme ich eine Antwort?</h3><p className="mt-2 text-sm text-black/70">Innerhalb von 24 Stunden. Fast‑Track ist möglich.</p></div>
+            <div className="card"><h3 className="font-medium">Erhalte ich ein Rezept?</h3><p className="mt-2 text-sm text-black/70">Ja, wenn es medizinisch sinnvoll ist – Abholung in deiner Apotheke.</p></div>
+            <div className="card"><h3 className="font-medium">Wie sicher sind meine Daten?</h3><p className="mt-2 text-sm text-black/70">EU‑Hosting, Verschlüsselung, strenge Zugriffskontrollen. DSGVO‑konform. Keine Datenverkäufe.</p></div>
+            <div className="card"><h3 className="font-medium">Was ist mit Notfällen oder Warnzeichen?</h3><p className="mt-2 text-sm text-black/70">Bei roten Flaggen bitte sofort Notruf/Notfallambulanz. Unser Service ist nicht für Notfälle.</p></div>
           </div>
         </div>
       </section>
@@ -208,7 +143,7 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-3 text-sm text-black/70">
           <div>
             <div className="font-semibold">DermaCompanion</div>
-            <p className="mt-2">Bald in Österreich & Deutschland. Pre‑Launch.</p>
+            <p className="mt-2">Online‑Dermatologie in Österreich & Deutschland.</p>
           </div>
           <div>
             <div className="font-semibold">Rechtliches</div>

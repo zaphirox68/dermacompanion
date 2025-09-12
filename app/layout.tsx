@@ -40,6 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
+      <head>
+        <script defer data-domain="dermacompanion.com" src="https://analytics.techaccelerate.at/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
+        <script dangerouslySetInnerHTML={{ __html: "window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }" }} />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
